@@ -7,11 +7,12 @@ const Wrapper = styled.button`
   background: transparent;
   border: 0;
   margin: 0;
-  display: inline-block;
+  display: grid;
+  place-items: center;
 `;
 
 const Box = styled.span`
-  width: 35px;
+  width: 24px;
   height: 24px;
   display: inline-block;
   position: relative;
@@ -19,7 +20,7 @@ const Box = styled.span`
 
 const InnerWrapper = styled.span`
   width: 100%;
-  height: 3px;
+  height: 2px;
   background-color: ${({ isOpen }) => (isOpen ? "transparent" : "white")};
   position: absolute;
   top: 50%;
@@ -31,27 +32,27 @@ const InnerWrapper = styled.span`
   &::before {
     content: "";
     width: 100%;
-    height: 3px;
+    height: 2px;
     position: absolute;
     background-color: white;
     transition: all 0.2s linear;
   }
 
   &::after {
-    top: ${({ isOpen }) => (isOpen ? "0" : "-10px")};
+    top: ${({ isOpen }) => (isOpen ? "0" : "-6px")};
     right: 0;
     transform: ${({ isOpen }) => (isOpen ? "rotateZ(45deg)" : "rotateZ(0)")};
   }
 
   &::before {
-    top: ${({ isOpen }) => (isOpen ? "0" : "10px")};
+    top: ${({ isOpen }) => (isOpen ? "0" : "6px")};
     right: 0;
     transform: ${({ isOpen }) => (isOpen ? "rotateZ(-45deg)" : "rotateZ(0)")};
   }
 `;
 
-const Hamburger = () => {
-  const [isToggle, setIsToggle] = useState(false);
+const Hamburger = ({ isToggle, setIsToggle }) => {
+  // const [isToggle, setIsToggle] = useState(false);
 
   return (
     <Wrapper onClick={() => setIsToggle((isToggle) => !isToggle)}>
