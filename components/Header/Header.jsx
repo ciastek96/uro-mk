@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: ${({theme}) => theme.zIndex.header};
 `;
 
 const InnerWrapper = styled.div`
@@ -66,19 +66,19 @@ const Logotype = styled.div`
 
 const StyledFBIcon = styled(FBIcon)`
   height: 18px;
-  fill: rgba(255, 255, 255, 0.8);
+  fill: ${({theme}) => theme.color.white80};
 
   ${SocialContainer} a:hover & {
-    fill: rgba(255, 255, 255, 1);
+    fill: ${({theme}) => theme.color.white};
   }
 `;
 
 const StyledYTIcon = styled(YTIcon)`
   height: 18px;
-  fill: rgba(255, 255, 255, 0.8);
+  fill: ${({theme}) => theme.color.white80};
 
   ${SocialContainer} a:hover & {
-    fill: rgba(255, 255, 255, 1);
+    fill: ${({theme}) => theme.color.white};
   }
 `;
 

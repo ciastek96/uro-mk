@@ -1,30 +1,25 @@
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
     <>
-      <div className={styles.container}>
-        <Head>
-          <title>URO-MK - Usługi remontowo ociepleniowe MK Marek Kołacz</title>
-          <meta charSet="UTF-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <meta
-            name="description"
-            content="Usługi remontowo ociepleniowe MK Marek Kołacz"
-          />
-          <link rel="icon" href="/favicon.png" />
-        </Head>
-        <Header />
-        <Hero />
+      <Head>
+        <title>URO-MK - Usługi remontowo ociepleniowe MK Marek Kołacz</title>
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Usługi remontowo ociepleniowe MK Marek Kołacz"
+        />
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      <Header />
+      <Hero />
 
-        {/* <main className={styles.main}>
+      {/* <main className={styles.main}>
           <h1 className={styles.title}>
             Welcome to <a href="https://nextjs.org">Next.js!</a>
           </h1>
@@ -73,7 +68,6 @@ export default function Home() {
             </span>
           </a>
         </footer> */}
-      </div>
     </>
   );
 }
