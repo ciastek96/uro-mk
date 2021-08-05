@@ -23,7 +23,7 @@ const InnerWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  max-width: 1280px;
+  max-width: 1440px;
   height: 100%;
   margin: auto;
   padding: 0 1rem;
@@ -49,11 +49,15 @@ const SocialContainer = styled.div`
 `;
 
 const Logotype = styled.div`
+  display: block;
   height: 100%;
-  margin: 0 20px;
+  //margin: 0 20px;
 
-  @media all and (max-width: 540px) {
-    margin-left: 0;
+  @media all and (min-width: 540px) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   a {
@@ -83,7 +87,7 @@ const StyledYTIcon = styled(YTIcon)`
 `;
 
 const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(true)
+  const [isNavOpen, setIsNavOpen] = useState(false)
   return (
   <StyledHeader>
     <InnerWrapper>

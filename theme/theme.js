@@ -11,6 +11,7 @@ export const theme = {
     dark50: "hsla(0, 0%, 0%, .5)",
     dark10: "hsla(0, 0%, 0%, .1)",
     grey: "hsla(0, 0%, 95%, 1)",
+    darkGrey: "hsla(0, 0%, 90%, 1)",
   },
   fontSize: {
     xs: "14px",
@@ -28,6 +29,7 @@ export const theme = {
   fontFamily: {
     Montserrat: `'Montserrat', sans-serif`,
     Lato: `'Lato', sans-serif`,
+    Overpass: `'Overpass', sans-serif`,
   },
   size: {
     xs: `320px`,

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import usePortal from "../../hooks/usePortal";
-import Contact from "../Contact/Contact";
+import ContactData from "../ContactData/ContactData";
 
 const InnerWrapper = styled.div`
   height: 100%;
@@ -36,14 +36,13 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   backdrop-filter: blur(5px);
   background-color: ${({ theme }) => theme.color.dark50};
   z-index: ${({ theme }) => theme.zIndex.nav};
   display: flex;
   flex-direction: row;
-  padding: 1rem;
 
   & > * {
     flex: 100%;
@@ -61,10 +60,10 @@ const Wrapper = styled.div`
 `;
 
 const Nav = styled.nav`
-  height: 65vh;
-  width: 100%;
+  height: 60%;
+  max-width: ${({ theme }) => theme.size.sm};
   margin: 0;
-  padding-left: clamp(5px, 30%, 50%);
+  padding-left: min(5vw, 15rem);
 `;
 
 const List = styled.ul`
@@ -72,7 +71,7 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   font-family: ${({ theme }) => theme.fontFamily.Montserrat};
-  font-size: clamp(2.5rem, 50%, 4rem);
+  font-size: clamp(32px, 2.7vw, 3rem);
   font-weight: 600;
   color: white;
   list-style: none;
@@ -90,7 +89,8 @@ const ListItem = styled.li`
     transition: color 0.15s ease-in-out;
   }
 
-  & > a:hover {
+  & > a:hover,
+  & > a:focus {
     color: ${({ theme }) => theme.color.white};
   }
 
@@ -108,7 +108,8 @@ const ListItem = styled.li`
     transform-origin: 0% 50%;
   }
 
-  & > a:hover::before {
+  & > a:hover::before,
+  & > a:focus::before {
     color: ${({ theme }) => theme.color.white65};
     border-color: ${({ theme }) => theme.color.yellow};
     transform: scaleX(100%);
@@ -117,47 +118,48 @@ const ListItem = styled.li`
   & > a:active {
     color: ${({ theme }) => theme.color.white80};
   }
-
-  & > a:active::before {
-    color: ${({ theme }) => theme.color.white65};
-    border-color: ${({ theme }) => theme.color.yellow};
-    transform: scaleX(150%);
-  }
 `;
+
+const Line = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% - 120px);
+  overflow: hidden;
+  z-index: calc(${({ theme }) => theme.zIndex.nav} + 1);
+  background-color: rgba(255, 255, 255, 0.1);
+`;
+
+const NavLink = ({ href, children }) => (
+  <ListItem>
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
+  </ListItem>
+);
 
 const Navigation = ({ isOpen }) => {
   const modalContent = isOpen ? (
-    <Wrapper isOpen={isOpen}>
-      <InnerWrapper>
-        <Nav>
-          <List>
-            <ListItem>
-              <Link href="/">
-                <a>O nas</a>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="/">
-                <a>Praca</a>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="/">
-                <a>Realizacje</a>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="/">
-                <a>Kontakt</a>
-              </Link>
-            </ListItem>
-          </List>
-        </Nav>
-      </InnerWrapper>
-      <InnerWrapper>
-        <Contact />
-      </InnerWrapper>
-    </Wrapper>
+    <>
+      <Wrapper isOpen={isOpen}>
+        <InnerWrapper>
+          <Nav>
+            <List>
+              <NavLink href="#nas">O nas</NavLink>
+              <NavLink href="#praca">Praca</NavLink>
+              <NavLink href="#realizacje">Realizacje</NavLink>
+              <NavLink href="#kontakt">Kontakt</NavLink>
+            </List>
+          </Nav>
+        </InnerWrapper>
+        <InnerWrapper>
+          <ContactData simplified="true" />
+          <Line />
+        </InnerWrapper>
+      </Wrapper>
+    </>
   ) : null;
 
   return usePortal(modalContent);

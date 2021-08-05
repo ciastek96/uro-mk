@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const Label = styled.p`
-  color: #f3b00d;
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
+  color: ${({ theme }) => theme.color.yellow};
+  font-family: ${({ theme }) => theme.fontFamily.Lato};
+  font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1.75px;
+  margin: 10px 0;
 `;
 
 export default Label;

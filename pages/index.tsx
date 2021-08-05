@@ -1,6 +1,11 @@
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
+import About from "../sections/About";
+import Career from "../sections/Career";
+import Works from "../sections/Works";
+import Contact from "../sections/Contact";
+import Heading from "../components/Heading/Heading";
 
 export default function Home() {
   return (
@@ -18,6 +23,9 @@ export default function Home() {
       </Head>
       <Header />
       <Hero />
+      <About />
+      <Works />
+      <Contact />
 
       {/* <main className={styles.main}>
           <h1 className={styles.title}>
