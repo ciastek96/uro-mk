@@ -2,6 +2,8 @@ export const theme = {
   color: {
     yellow: "hsla(43, 91%, 50%, 1)",
     yellow80: "hsla(43, 91%, 50%, .8)",
+    blue: "hsla(225, 63%, 18%, 1)",
+    blue80: "hsla(225, 63%, 18%, .8)",
     white: "hsla(0, 0%, 100%, 1)",
     white80: "hsla(0, 0%, 100%, .8)",
     white65: "hsla(0, 0%, 100%, .65)",
@@ -11,6 +13,7 @@ export const theme = {
     dark50: "hsla(0, 0%, 0%, .5)",
     dark10: "hsla(0, 0%, 0%, .1)",
     grey: "hsla(0, 0%, 95%, 1)",
+    lightGrey: "hsla(0, 0%, 77%, 1)",
     darkGrey: "hsla(0, 0%, 90%, 1)",
   },
   fontSize: {

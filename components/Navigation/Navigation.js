@@ -155,7 +155,7 @@ const Navigation = ({ isOpen }) => {
           </Nav>
         </InnerWrapper>
         <InnerWrapper>
-          <ContactData simplified="true" />
+          <ContactData simplified="true" margin="1rem auto 3rem" />
           <Line />
         </InnerWrapper>
       </Wrapper>

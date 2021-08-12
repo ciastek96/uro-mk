@@ -32,7 +32,7 @@ const InnerWrapper = styled.div`
   &:nth-child(1) {
     //height: clamp(320px, 100vw, 560px);
     min-height: 320px;
-    background: blue;
+    background: ${({ theme }) => theme.color.blue};
   }
 
   &:nth-child(2) {
@@ -49,7 +49,9 @@ const InnerWrapper = styled.div`
 
 const Content = styled.p`
   font-family: ${({ theme }) => theme.fontFamily.Overpass};
+  color: ${({ theme }) => theme.color.dark80};
   font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.4;
 `;
 
 const Card = ({ id, image, imageAlt, title, children }) => {

@@ -6,6 +6,7 @@ import Career from "../sections/Career";
 import Works from "../sections/Works";
 import Contact from "../sections/Contact";
 import Heading from "../components/Heading/Heading";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <About />
       <Works />
       <Contact />
+      <Footer />
 
       {/* <main className={styles.main}>
           <h1 className={styles.title}>
