@@ -10,6 +10,7 @@ const Btn = styled.button`
   width: 0;
   min-width: 130px;
   padding: 0.6rem;
+  padding: 10px 24px;
   border-radius: 50px;
   border: none;
   font-family: ${({ theme }) => theme.fontFamily.Overpass};

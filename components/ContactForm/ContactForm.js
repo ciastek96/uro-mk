@@ -1,37 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { useForm, SubmitHandler } from "react-hook-form";
+import styled from "styled-components";
+import { useForm } from "react-hook-form";
+import Input from "../Input/Input";
+import Textarea from "../Textarea/Textarea";
 import Button from "../Button/Button";
-
-const InputStyles = () => css`
-  border: 1px solid ${({ theme }) => theme.color.darkGrey};
-  border-radius: 5px;
-  color: ${({ theme }) => theme.color.dark80};
-  font-size: 14px;
-  font-family: ${({ theme }) => theme.fontFamily.Overpass};
-  outline-color: ${({ theme }) => theme.color.yellow};
-  caret-color: ${({ theme }) => theme.color.yellow};
-
-  &::placeholder {
-    color: ${({ theme }) => theme.color.lightGrey};
-    font-size: 14px;
-    font-family: ${({ theme }) => theme.fontFamily.Overpass};
-  }
-
-  ${({ isValid }) =>
-    isValid &&
-    css`
-      outline-color: green;
-      caret-color: green;
-    `}
-
-  ${({ withErrors }) =>
-    withErrors &&
-    css`
-      outline-color: red;
-      caret-color: red;
-    `};
-`;
+import Checkbox from "../Checkbox/Checkbox";
 
 const Form = styled.form`
   width: 100%;
@@ -42,6 +15,8 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: space-between;
   padding: 3rem clamp(2rem, 50%, 2vw);
+  border: 1px solid black;
+  row-gap: 1rem;
 `;
 
 const Error = styled.p`
@@ -58,30 +33,11 @@ const Heading = styled.h2`
   color: black;
 `;
 
-const Input = styled.input`
-  ${InputStyles};
-  width: 100%;
-  height: 45px;
-  margin: 0.5rem auto;
-  padding: 0 1rem;
-`;
-
-const Textarea = styled.textarea`
-  ${InputStyles};
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 250px;
-  max-height: 500px;
-  height: 45px;
-  padding: 1rem;
-  margin: 0.5rem auto;
-`;
-
 const ContactForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
 
@@ -97,8 +53,7 @@ const ContactForm = () => {
           withErrors={!!errors.name}
           {...register("name", { required: true })}
         />
-        {console.log("isValid: ", isValid)}
-        {errors.name && <Error>Pole nie może być puste</Error>}
+        {errors.name && <Error>Pole obowiązkowe</Error>}
         <Input
           type="text"
           placeholder="Adres e-mail *"
@@ -113,7 +68,7 @@ const ContactForm = () => {
             },
           })}
         />
-        {errors.email && <Error>Pole nie może być puste</Error>}
+        {errors.email && <Error>Pole obowiązkowe</Error>}
         <Textarea
           name="content"
           id="content"
@@ -121,8 +76,16 @@ const ContactForm = () => {
           withErrors={!!errors.content}
           {...register("content", { required: true })}
         />
-        {errors.content && <Error>Pole nie może być puste</Error>}
+        {errors.content && <Error>Pole obowiązkowe</Error>}
       </div>
+      <Checkbox
+        name="agreement"
+        label="Wyrażam zgodę na przetwarzanie danych osobowych przez firmę URO-MK w
+        celu udzielenia odpowiedzi na zapytanie."
+        withErrors={!!errors.agreement}
+        registerProps={{ ...register("agreement", { required: true }) }}
+      />
+      {errors.agreement && <Error>Pole obowiązkowe</Error>}
       <Button type="submit">Wyślij</Button>
 
       {console.log(errors)}
