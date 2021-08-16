@@ -8,7 +8,6 @@ import Checkbox from "../Checkbox/Checkbox";
 
 const Form = styled.form`
   width: 100%;
-  min-width: 280px;
   max-height: 100%;
   background: ${({ theme }) => theme.color.grey};
   display: flex;
