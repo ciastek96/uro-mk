@@ -55,7 +55,10 @@ const Hamburger = ({ isToggle, setIsToggle }) => {
   // const [isToggle, setIsToggle] = useState(false);
 
   return (
-    <Wrapper onClick={() => setIsToggle((isToggle) => !isToggle)}>
+    <Wrapper
+      onClick={() => setIsToggle((isToggle) => !isToggle)}
+      aria-label="menu"
+    >
       <Box>
         <InnerWrapper isOpen={isToggle}></InnerWrapper>
       </Box>

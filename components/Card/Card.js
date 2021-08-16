@@ -54,17 +54,17 @@ const Content = styled.p`
   line-height: 1.4;
 `;
 
-const Card = ({ id, image, imageAlt, title, children }) => {
+const Card = ({ id, image, title, children }) => {
   return (
     <Wrapper id={id}>
       <InnerWrapper>
-        <p>qwheuwqheuwqhuieqw</p>
         <Image
           src={image}
-          alt={imageAlt}
+          alt={title}
           layout="fill"
           objectFit="cover"
           quality="75"
+          placeholder="blur"
         />
       </InnerWrapper>
       <InnerWrapper>

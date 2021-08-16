@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Img1 from "../public/Frame_1.jpg";
-import Img2 from "../public/Frame_2.jpg";
-import Img3 from "../public/Frame_3.jpg";
-import Img4 from "../public/Frame_4.jpg";
+import Img1 from "../public/Frame_1.webp";
+import Img2 from "../public/Frame_2.webp";
+import Img3 from "../public/Frame_3.webp";
+import Img4 from "../public/Frame_4.webp";
 import Card from "../components/Card/Card";
 
 const Wrapper = styled.section`

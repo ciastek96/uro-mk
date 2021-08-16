@@ -147,7 +147,7 @@ const Navigation = ({ isOpen }) => {
         <InnerWrapper>
           <Nav>
             <List>
-              <NavLink href="#nas">O nas</NavLink>
+              <NavLink href="#onas">O nas</NavLink>
               <NavLink href="#praca">Praca</NavLink>
               <NavLink href="#realizacje">Realizacje</NavLink>
               <NavLink href="#kontakt">Kontakt</NavLink>

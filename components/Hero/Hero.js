@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import BackgroundImage from "../../public/background.jpg";
+import BackgroundImage from "../../public/background.webp";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -48,6 +48,8 @@ const Hero = () => {
         layout="fill"
         objectFit="cover"
         quality="75"
+        placeholder="blur"
+        priority
       />
       <Content>
         <Title>Kompleksowa budowa domów</Title>

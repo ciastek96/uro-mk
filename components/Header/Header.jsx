@@ -96,6 +96,7 @@ const Header = () => {
           href="https://www.facebook.com/uromk"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Facebook"
         >
           <StyledFBIcon />
         </a>
@@ -103,12 +104,13 @@ const Header = () => {
           href="https://www.youtube.com/channel/UCqB9Mp9ZgEEeAUgq8rpz1fw/about"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Youtube"
         >
           <StyledYTIcon />
         </a>
       </SocialContainer>
       <Logotype>
-        <a href="#">
+        <a href="#" aria-label="URO-MK">
           <Image src={LogoSmallSVG} alt="URO-MK logo" height={60} width={60} />
           {/* <Image src={LogoLargeSVG} alt="URO-MK logo" height={80} width={250} /> */}
         </a>

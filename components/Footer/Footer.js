@@ -36,6 +36,7 @@ const Footer = () => (
       layout="fill"
       objectFit="cover"
       quality="75"
+      placeholder="blur"
     />
 
     <InnerWrapper>

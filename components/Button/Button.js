@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Btn = styled.button`
+const Wrapper = styled.button`
   background: ${({ theme }) => theme.color.yellow};
   display: inline-flex;
   justify-content: center;
@@ -24,7 +24,7 @@ const Btn = styled.button`
 `;
 
 const Button = ({ isLoading, children }) => {
-  return <Btn>{isLoading ? "loading" : children}</Btn>;
+  return <Wrapper>{isLoading ? "loading" : children}</Wrapper>;
 };
 
 export default Button;
