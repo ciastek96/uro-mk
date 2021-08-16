@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Heading from "../components/Heading/Heading";
+import MasonryGrid from "../components/MasonryGrid/MasonryGrid";
 
 const Wrapper = styled.section`
   max-width: 1440px;
@@ -13,6 +14,7 @@ const Wrapper = styled.section`
 const Works = () => (
   <Wrapper id="realizacje">
     <Heading>realizacje</Heading>
+    <MasonryGrid />
   </Wrapper>
 );
 
