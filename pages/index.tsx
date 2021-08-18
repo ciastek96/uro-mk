@@ -2,11 +2,9 @@ import Head from "next/head";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
 import About from "../sections/About";
-import Career from "../sections/Career";
 import Works from "../sections/Works";
-import Contact from "../sections/Contact";
-import Heading from "../components/Heading/Heading";
 import Footer from "../components/Footer/Footer";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 export default function Home() {
   return (
@@ -22,13 +20,14 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
+
       <Header />
       <Hero />
       <About />
       <Works />
 
       <Footer />
-
+      <ScrollToTop />
       {/* <main className={styles.main}>
           <h1 className={styles.title}>
             Welcome to <a href="https://nextjs.org">Next.js!</a>

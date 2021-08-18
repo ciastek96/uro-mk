@@ -115,8 +115,8 @@ const Header = () => {
           {/* <Image src={LogoLargeSVG} alt="URO-MK logo" height={80} width={250} /> */}
         </a>
       </Logotype>
-      <Hamburger isToggle={isNavOpen} setIsToggle={setIsNavOpen}/>
-      <Navigation isOpen={isNavOpen} />
+      <Hamburger isToggle={isNavOpen} setIsToggle={setIsNavOpen} />
+      <Navigation isOpen={isNavOpen} setIsOpen={setIsNavOpen}/>
     </InnerWrapper>
   </StyledHeader>
 )}

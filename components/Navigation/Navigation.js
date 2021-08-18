@@ -132,25 +132,33 @@ const Line = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
 `;
 
-const NavLink = ({ href, children }) => (
-  <ListItem>
+const NavLink = ({ href, children, setIsOpen }) => (
+  <ListItem onClick={() => setIsOpen(false)}>
     <Link href={href}>
       <a>{children}</a>
     </Link>
   </ListItem>
 );
 
-const Navigation = ({ isOpen }) => {
+const Navigation = ({ isOpen, setIsOpen }) => {
   const modalContent = isOpen ? (
     <>
       <Wrapper isOpen={isOpen}>
         <InnerWrapper>
           <Nav>
             <List>
-              <NavLink href="#onas">O nas</NavLink>
-              <NavLink href="#praca">Praca</NavLink>
-              <NavLink href="#realizacje">Realizacje</NavLink>
-              <NavLink href="#kontakt">Kontakt</NavLink>
+              <NavLink href="/#onas" setIsOpen={setIsOpen}>
+                O nas
+              </NavLink>
+              <NavLink href="/#praca" setIsOpen={setIsOpen}>
+                Praca
+              </NavLink>
+              <NavLink href="/#realizacje" setIsOpen={setIsOpen}>
+                Realizacje
+              </NavLink>
+              <NavLink href="/#kontakt" setIsOpen={setIsOpen}>
+                Kontakt
+              </NavLink>
             </List>
           </Nav>
         </InnerWrapper>

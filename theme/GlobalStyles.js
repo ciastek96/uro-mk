@@ -10,6 +10,10 @@ const GlobalStyles = createGlobalStyle`
         background: ${({ theme }) => theme.color.grey};
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     a {
         color: inherit;
         text-decoration: none;
