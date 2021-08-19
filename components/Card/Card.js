@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: center;
   position: relative;
