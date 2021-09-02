@@ -10,6 +10,7 @@ const Textarea = styled.textarea`
   height: 45px;
   padding: 1rem;
   margin: 0.5rem auto;
+  resize: vertical;
 `;
 
 export default Textarea;

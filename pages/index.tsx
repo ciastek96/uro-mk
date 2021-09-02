@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
@@ -5,8 +6,10 @@ import About from "../sections/About";
 import Works from "../sections/Works";
 import Footer from "../components/Footer/Footer";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import Context from "../Context/Context";
 
 export default function Home() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <>
       <Head>
@@ -20,9 +23,11 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
+      <Context.Provider value={{ isNavOpen, setIsNavOpen }}>
+        <Header />
+        <Hero />
+      </Context.Provider>
 
-      <Header />
-      <Hero />
       <About />
       <Works />
 

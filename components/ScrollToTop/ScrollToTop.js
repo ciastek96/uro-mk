@@ -30,8 +30,6 @@ const StyledAngleUp = styled(AngleUp)`
   fill: white;
 `;
 
-let renderCount = 0;
-
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 

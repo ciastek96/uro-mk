@@ -29,19 +29,39 @@ const List = styled.ul`
 const ListItem = styled.li`
   break-inside: avoid;
   margin-bottom: 0.5rem;
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: ${({ theme }) => theme.color.blue};
+    opacity: 0;
+    transition: opacity 0.2s linear;
+  }
+
+  &:hover::after {
+    opacity: 0.7;
+  }
 `;
 
 const MasonryGrid = () => (
   <List>
     {images.map((image) => (
       <ListItem key={image.blurDataURL}>
-        <Image
-          src={image}
-          alt={image.src}
-          layout="responsive"
-          quality="75"
-          placeholder="blur"
-        />
+        <a href="#">
+          <Image
+            src={image}
+            alt={image.src}
+            layout="responsive"
+            quality="75"
+            placeholder="blur"
+          />
+        </a>
       </ListItem>
     ))}
   </List>

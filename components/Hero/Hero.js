@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import BackgroundImage from "../../public/background.webp";
+import Context from "../../Context/Context";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -32,8 +33,11 @@ const Title = styled.h1`
   color: transparent;
   position: relative;
   display: inline-block;
-  animation: overlay 0.25s ease forwards;
+  animation: ${({ isNavOpen }) =>
+    isNavOpen ? "none" : "overlay 0.25s ease forwards"};
   animation-delay: 0.5s;
+  opacity: ${({ isNavOpen }) => (isNavOpen ? 0 : 1)};
+  transition: opacity 0.2s ease-in-out;
 
   &::first-of-type {
     color: hsla(43, 91%, 50%, 1);
@@ -47,10 +51,10 @@ const Title = styled.h1`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    // z-index: -1;
     transform: scaleX(0);
     transform-origin: left;
-    animation: reveal 1s ease forwards;
+    animation: ${({ isNavOpen }) =>
+      isNavOpen ? "none" : "reveal 1s ease forwards"};
     animation-delay: 0s;
   }
 
@@ -61,9 +65,6 @@ const Title = styled.h1`
   }
 
   @keyframes reveal {
-    /* 0% {
-      transform: scaleX(-100%);
-    } */
     50% {
       transform: scaleX(100%);
       transform-origin: left;
@@ -84,11 +85,13 @@ const Paragraph = styled.p`
   width: 80%;
   font-family: ${({ theme }) => theme.fontFamily.Overpass};
   font-size: clamp(16px, 2vw, 20px);
-  color: ${({ theme }) => theme.color.darkGrey};
   color: transparent;
   transform: translateY(-30%);
-  animation: fadeInUp 1s ease forwards;
+  animation: ${({ isNavOpen }) =>
+    isNavOpen ? "none" : "fadeInUp 1s ease forwards"};
   animation-delay: 0.5s;
+  opacity: ${({ isNavOpen }) => (isNavOpen ? 0 : 1)};
+  transition: opacity 2s ease-in-out;
 
   @keyframes fadeInUp {
     100% {
@@ -99,6 +102,7 @@ const Paragraph = styled.p`
 `;
 
 const Hero = () => {
+  const { isNavOpen, setIsNavOpen } = useContext(Context);
   return (
     <Wrapper>
       <Image
@@ -111,10 +115,10 @@ const Hero = () => {
         priority
       />
       <Content>
-        <Title>
+        <Title isNavOpen={isNavOpen}>
           Kompleksowa budowa domów<span></span>
         </Title>
-        <Paragraph>
+        <Paragraph isNavOpen={isNavOpen}>
           At Finance we care about your future. We help you invest the way you
           want. So you can relax, have fun and let your fund grow.
         </Paragraph>

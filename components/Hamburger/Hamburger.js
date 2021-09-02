@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import Context from "../../Context/Context";
 
 const Wrapper = styled.button`
   padding: 10px;
@@ -51,9 +52,10 @@ const InnerWrapper = styled.span`
   }
 `;
 
-const Hamburger = ({ isToggle, setIsToggle }) => {
+const Hamburger = () => {
   // const [isToggle, setIsToggle] = useState(false);
-
+  const { isNavOpen: isToggle, setIsNavOpen: setIsToggle } =
+    useContext(Context);
   return (
     <Wrapper
       onClick={() => setIsToggle((isToggle) => !isToggle)}

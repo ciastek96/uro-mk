@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Hamburger from "../Hamburger/Hamburger";
@@ -7,6 +7,7 @@ import FBIcon from "../icons/FBIcon";
 import YTIcon from "../icons/YTIcon";
 import LogoSmallSVG from "../../public/logotype_c.svg";
 import LogoLargeSVG from "../../public/logotype_a.svg";
+import Context from '../../Context/Context'
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -34,6 +35,8 @@ const SocialContainer = styled.div`
   height: 100%;
   width: 80px;
   align-items: center;
+  opacity: ${({isNavOpen}) => isNavOpen ? 0:1};
+  transition: opacity 0.15s linear;
 
   a {
     display: grid;
@@ -87,11 +90,12 @@ const StyledYTIcon = styled(YTIcon)`
 `;
 
 const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
+  // const [isNavOpen, setIsNavOpen] = useState(false)
+  const {isNavOpen, setIsNavOpen} = useContext(Context);
   return (
   <StyledHeader>
     <InnerWrapper>
-      <SocialContainer>
+      <SocialContainer isNavOpen={isNavOpen}>
         <a
           href="https://www.facebook.com/uromk"
           target="_blank"
@@ -115,8 +119,9 @@ const Header = () => {
           {/* <Image src={LogoLargeSVG} alt="URO-MK logo" height={80} width={250} /> */}
         </a>
       </Logotype>
-      <Hamburger isToggle={isNavOpen} setIsToggle={setIsNavOpen} />
+      <Hamburger />
       <Navigation isOpen={isNavOpen} setIsOpen={setIsNavOpen}/>
+      {/* {console.log(q)} */}
     </InnerWrapper>
   </StyledHeader>
 )}

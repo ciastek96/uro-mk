@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import usePortal from "../../hooks/usePortal";
+import Context from "../../Context/Context";
 import ContactData from "../ContactData/ContactData";
 
 const InnerWrapper = styled.div`
@@ -32,7 +33,8 @@ const Wrapper = styled.div`
     }
   }
 
-  animation: inAnimation 0.2s;
+  animation: inAnimation 0.5s;
+  // animation-delay: 2s;
   position: fixed;
   top: 0;
   left: 0;
@@ -140,7 +142,8 @@ const NavLink = ({ href, children, setIsOpen }) => (
   </ListItem>
 );
 
-const Navigation = ({ isOpen, setIsOpen }) => {
+const Navigation = () => {
+  const { isNavOpen: isOpen, setIsNavOpen: setIsOpen } = useContext(Context);
   const modalContent = isOpen ? (
     <>
       <Wrapper isOpen={isOpen}>
