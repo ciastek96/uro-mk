@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "next/link";
 import Image from "next/image";
 import Img1 from "../../public/gallery/1.jpg";
 import Img2 from "../../public/gallery/2.jpg";
@@ -53,15 +54,17 @@ const MasonryGrid = () => (
   <List>
     {images.map((image) => (
       <ListItem key={image.blurDataURL}>
-        <a href="#">
-          <Image
-            src={image}
-            alt={image.src}
-            layout="responsive"
-            quality="75"
-            placeholder="blur"
-          />
-        </a>
+        <Link href="/realizacje">
+          <a>
+            <Image
+              src={image}
+              alt={image.src}
+              layout="responsive"
+              quality="75"
+              placeholder="blur"
+            />
+          </a>
+        </Link>
       </ListItem>
     ))}
   </List>

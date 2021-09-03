@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Heading from "../Heading/Heading";
+import Content from "../Content/Content";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -47,12 +48,12 @@ const InnerWrapper = styled.div`
   } */
 `;
 
-const Content = styled.p`
-  font-family: ${({ theme }) => theme.fontFamily.Overpass};
-  color: ${({ theme }) => theme.color.dark80};
-  font-size: clamp(16px, 2vw, 18px);
-  line-height: 1.4;
-`;
+// const Content = styled.p`
+//   font-family: ${({ theme }) => theme.fontFamily.Overpass};
+//   color: ${({ theme }) => theme.color.dark80};
+//   font-size: clamp(16px, 2vw, 18px);
+//   line-height: 1.4;
+// `;
 
 const Card = ({ id, image, title, children }) => {
   return (
