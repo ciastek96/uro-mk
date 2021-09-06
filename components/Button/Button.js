@@ -1,8 +1,8 @@
-import React from "react";
+import React, { css } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.button`
-  background: ${({ theme }) => theme.color.yellow};
+  background-color: ${({ theme }) => theme.color.yellow};
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,7 @@ const Wrapper = styled.button`
   font-family: ${({ theme }) => theme.fontFamily.Overpass};
   font-size: 14px;
   color: white;
+  fill: white;
   transition: background 0.2s ease-in-out;
 
   &:hover {

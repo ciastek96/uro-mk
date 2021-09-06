@@ -33,20 +33,22 @@ const ListItem = styled.li`
   position: relative;
   cursor: pointer;
 
-  &::after {
+  a::before {
     content: "";
     width: 100%;
     height: 100%;
     position: absolute;
+    overflow: hidden;
     top: 0;
     left: 0;
     background-color: ${({ theme }) => theme.color.blue};
     opacity: 0;
     transition: opacity 0.2s linear;
+    z-index: 1;
   }
 
-  &:hover::after {
-    opacity: 0.7;
+  a:hover::before {
+    opacity: 0.6;
   }
 `;
 
@@ -54,7 +56,7 @@ const MasonryGrid = () => (
   <List>
     {images.map((image) => (
       <ListItem key={image.blurDataURL}>
-        <Link href="/realizacje">
+        <Link href="/realizacje" passHref={true}>
           <a>
             <Image
               src={image}
