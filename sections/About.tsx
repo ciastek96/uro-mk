@@ -60,10 +60,27 @@ const data = [
   },
 ];
 
-const About = () => (
+interface Props {
+  sections: {
+    id: string;
+    title: string;
+    content: string;
+    image: {
+      url: string
+    }
+  }[]
+}
+
+const About:React.FC<Props> = ({sections}) => (
   <Wrapper id="onas">
-    {data.map(({ id, image, title, content }) => (
+
+    {/* {data.map(({ id, image, title, content }) => (
       <Card key={id} id={id} image={image} title={title}>
+        {content}
+      </Card>
+    ))} */}
+    {sections.map(({ id, image, title, content }, key) => (
+      <Card key={id} id={key} image={image.url} title={title}>
         {content}
       </Card>
     ))}

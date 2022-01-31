@@ -1,4 +1,4 @@
-import React, { css } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.button`
@@ -24,8 +24,13 @@ const Wrapper = styled.button`
   }
 `;
 
-const Button = ({ isLoading, children }) => {
-  return <Wrapper>{isLoading ? "loading" : children}</Wrapper>;
-};
+interface IButtonProps {
+  isLoading?: boolean;
+  children: ReactNode;
+}
+
+const Button = ({ isLoading = false, children } : IButtonProps) => (
+  <Wrapper>{isLoading ? "loading" : children}</Wrapper>
+)
 
 export default Button;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import graphQLClient from '../api/graphQLClient'
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
@@ -8,8 +9,42 @@ import Footer from "../components/Footer/Footer";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import Context from "../Context/Context";
 
-export default function Home() {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+export const getStaticProps = async () => {
+  const query = `{
+    hero(where: {id: "ckz0bnlygl2v50c484so2ymjp"}) {
+      content
+      header
+      bg {
+        url
+      }
+    }
+    sections {
+      title
+      id
+      content
+      image {
+        url
+      }
+    }
+  }
+  `;
+  const {hero, sections} = await graphQLClient.request(query);
+
+  return {
+    props: {
+      hero,
+      sections
+    },
+  };
+};
+
+interface IHomeProps {
+  hero: any;
+  sections: any;
+}
+
+export default function Home({ hero, sections }: IHomeProps) {
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   return (
     <>
       <Head>
@@ -25,10 +60,10 @@ export default function Home() {
       </Head>
       <Context.Provider value={{ isNavOpen, setIsNavOpen }}>
         <Header />
-        <Hero />
+        <Hero hero={hero}/>
       </Context.Provider>
 
-      <About />
+      <About sections={sections}/>
       <Works />
 
       <Footer />

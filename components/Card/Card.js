@@ -65,7 +65,7 @@ const Card = ({ id, image, title, children }) => {
           layout="fill"
           objectFit="cover"
           quality="75"
-          placeholder="blur"
+          // placeholder="blur"
         />
       </InnerWrapper>
       <InnerWrapper>

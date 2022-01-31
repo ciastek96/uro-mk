@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   background: darkgray;
   display: flex;
   align-items: center;
+  position: relative;
 `;
 
 const Content = styled.div`
@@ -101,26 +102,35 @@ const Paragraph = styled.p`
   }
 `;
 
-const Hero = () => {
+interface IHeroProps {
+  hero: {
+    content: string,
+    header: string,
+    bg: {
+      url: string
+    }
+  }
+}
+
+const Hero:React.FC<IHeroProps> = ({hero}) => {
   const { isNavOpen, setIsNavOpen } = useContext(Context);
   return (
     <Wrapper>
       <Image
-        src={BackgroundImage}
+        src={hero.bg.url}
         alt="URO-MK logo"
         layout="fill"
         objectFit="cover"
         quality="75"
-        placeholder="blur"
+        // placeholder="blur"
         priority
       />
       <Content>
         <Title isNavOpen={isNavOpen}>
-          Kompleksowa budowa domów<span></span>
+        {hero.header}<span></span>
         </Title>
         <Paragraph isNavOpen={isNavOpen}>
-          At Finance we care about your future. We help you invest the way you
-          want. So you can relax, have fun and let your fund grow.
+        {hero.content}
         </Paragraph>
       </Content>
     </Wrapper>
