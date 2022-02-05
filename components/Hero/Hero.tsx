@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import BackgroundImage from "../../public/background.webp";
 import Context from "../../Context/Context";
 
@@ -26,6 +26,8 @@ const Content = styled.div`
   padding: 2rem;
   /* flex: 1; */
 `;
+
+
 
 const Title = styled.h1`
   font-size: 48px;

@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import InputStyles from "./InputStyles";
 
-const Input = styled.input`
+interface IInputProps {
+    type: string;
+    name: string;
+    id: string;
+    withErrors?:boolean
+}
+
+const Input= styled.input<IInputProps>`
   ${InputStyles};
   width: 100%;
   height: 45px;

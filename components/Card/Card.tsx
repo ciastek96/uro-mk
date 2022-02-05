@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import Image from "next/image";
 import Heading from "../Heading/Heading";
 import Content from "../Content/Content";
@@ -55,7 +55,14 @@ const InnerWrapper = styled.div`
 //   line-height: 1.4;
 // `;
 
-const Card = ({ id, image, title, children }) => {
+interface ICardProps {
+  id: string;
+  image: string;
+  title: string;
+  children: ReactNode;
+}
+
+const Card: React.FC<ICardProps> = ({ id, image, title, children }) => {
   return (
     <Wrapper id={id}>
       <InnerWrapper>
@@ -65,7 +72,7 @@ const Card = ({ id, image, title, children }) => {
           layout="fill"
           objectFit="cover"
           quality="75"
-          // placeholder="blur"
+          // `placeholder="blur"
         />
       </InnerWrapper>
       <InnerWrapper>

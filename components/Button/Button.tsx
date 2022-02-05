@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.button`
+const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.color.yellow};
   display: inline-flex;
   justify-content: center;
@@ -27,10 +27,11 @@ const Wrapper = styled.button`
 interface IButtonProps {
   isLoading?: boolean;
   children: ReactNode;
+  type: "button" | "submit" | "reset" | undefined;
 }
 
-const Button = ({ isLoading = false, children } : IButtonProps) => (
-  <Wrapper>{isLoading ? "loading" : children}</Wrapper>
+const Button: React.FC<IButtonProps> = ({ isLoading = false, children, type="submit" } : IButtonProps) => (
+  <StyledButton type={type}>{isLoading ? "loading" : children}</StyledButton>
 )
 
 export default Button;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, ReactNode } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import usePortal from "../../hooks/usePortal";
@@ -134,7 +134,13 @@ const Line = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
 `;
 
-const NavLink = ({ href, children, setIsOpen }) => (
+interface INavLinkProps {
+  href: string;
+  children: ReactNode;
+  setIsOpen: ()=>{};
+}
+
+const NavLink: React.FC<INavLinkProps> = ({ href, children, setIsOpen }) => (
   <ListItem onClick={() => setIsOpen(false)}>
     <Link href={href}>
       <a>{children}</a>
@@ -166,7 +172,7 @@ const Navigation = () => {
           </Nav>
         </InnerWrapper>
         <InnerWrapper>
-          <ContactData simplified="true" margin="1rem auto 3rem" />
+          <ContactData simplified={true} margin="1rem auto 3rem" />
           <Line />
         </InnerWrapper>
       </Wrapper>

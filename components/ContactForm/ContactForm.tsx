@@ -32,13 +32,16 @@ const Heading = styled.h2`
   color: black;
 `;
 
-const ContactForm = () => {
+
+
+const ContactForm:React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const onSubmit = (data:{}):void => console.log(data);
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -47,7 +50,6 @@ const ContactForm = () => {
         <Input
           type="text"
           placeholder="Imię i nazwisko *"
-          name="name"
           id="name"
           withErrors={!!errors.name}
           {...register("name", { required: true })}
@@ -56,7 +58,6 @@ const ContactForm = () => {
         <Input
           type="text"
           placeholder="Adres e-mail *"
-          name="email"
           id="email"
           withErrors={!!errors.email}
           {...register("email", {
@@ -69,7 +70,6 @@ const ContactForm = () => {
         />
         {errors.email && <Error>Pole obowiązkowe</Error>}
         <Textarea
-          name="content"
           id="content"
           placeholder="Treść wiadomości... *"
           withErrors={!!errors.content}

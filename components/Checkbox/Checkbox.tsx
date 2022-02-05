@@ -20,16 +20,16 @@ const Icon = styled.svg`
 
 const Box = styled.rect`
   stroke-dasharray: 320;
-  stroke-dashoffset: 0;
+  stroke-dashoffset: 320;
   fill: white;
-  transition: all 0.15s linear;
+  transition: all .5s linear;
 `;
 
 const Check = styled.polyline`
   stroke-dasharray: 70;
-  stroke-dashoffset: 70;
+  stroke-dashoffset: 70 ;
   fill: none;
-  transition: all 0.15s linear;
+  transition: all .5s linear;
 `;
 
 const Input = styled.input`
@@ -74,7 +74,14 @@ const Input = styled.input`
   }
 `;
 
-const Checkbox = ({ name, label, withErrors, registerProps }) => (
+interface ICheckboxProps {
+  name: string;
+  label: string;
+  withErrors: boolean;
+  registerProps: {}
+}
+
+const Checkbox:React.FC<ICheckboxProps> = ({ name, label, withErrors, registerProps }) => (
   <>
     <Input
       type="checkbox"

@@ -29,7 +29,13 @@ const LogotypeContainer = styled.div`
   margin-bottom: 2rem;
 `;
 
-const ContactData = ({ simplified, margin, padding }) => (
+interface IContactDataProps {
+  simplified?: string | boolean;
+  margin?: string;
+  padding?: string;
+}
+
+const ContactData: React.FC<IContactDataProps> = ({ simplified=false, margin="0", padding="0" }) => (
   <Wrapper margin={margin} padding={padding}>
     <LogotypeContainer>
       <Image src={LogoLargeSVG} alt="URO-MK logo" height={80} width={250} />

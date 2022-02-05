@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import Image from "next/image";
 import Hamburger from "../Hamburger/Hamburger";
 import Navigation from "../Navigation/Navigation";
@@ -9,6 +9,17 @@ import LogoSmallSVG from "../../public/logotype_c.svg";
 import LogoLargeSVG from "../../public/logotype_a.svg";
 import Context from '../../Context/Context'
 
+const fadeInUp = keyframes`
+0% {
+      opacity: 0;
+      transform: translateY(-30%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+`
+
 const StyledHeader = styled.header`
   width: 100%;
   height: 100px;
@@ -17,7 +28,10 @@ const StyledHeader = styled.header`
   top: 0;
   left: 0;
   z-index: ${({theme}) => theme.zIndex.header};
+  animation: ${fadeInUp} 1s ease forwards;
 `;
+
+
 
 const InnerWrapper = styled.div`
   display: flex;
@@ -127,3 +141,62 @@ const Header = () => {
 )}
 
 export default Header;
+// #inner {
+//   /* fill: rgba(255, 255, 255,0);
+//   */
+//   stroke: white;
+//   stroke-width: 1px;
+//   fill: transparent;
+//   stroke-dasharray: 1000;
+//   stroke-dashoffset: 1000;
+//   animation: dash2 3s linear forwards;
+
+// }
+
+// #outer {
+//   stroke: white;
+//   stroke-width: 1px;
+//   fill: transparent;
+//   stroke-dasharray: 1000;
+//   stroke-dashoffset: 1000;
+//   animation: dash1 3s linear forwards;
+// }
+
+
+// @keyframes dash1 {
+//   0% {
+//     fill: transparent;
+//     opacity: 0;
+//   }
+//   50% {
+//     fill: transparent;
+
+//     transform: scale(1);
+//   }
+
+//   100% {
+//     stroke-dashoffset: 0;
+//     stroke-width:1px;
+//     stroke: transparent;
+//     fill: #F3B00D;
+//   }
+// }
+
+// @keyframes dash2 {
+//   0% {
+//     fill: transparent;
+//     opacity: 0;
+//   }
+//   50% {
+//     fill: transparent;
+
+//     transform: scale(1);
+//   }
+
+//   100% {
+//     stroke-dashoffset: 0;
+//     stroke-width: 1px;
+//     stroke: transparent;
+//     fill: #fff;
+//   }
+// }

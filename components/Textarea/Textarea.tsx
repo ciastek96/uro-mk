@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import InputStyles from "../Input/InputStyles";
 
-const Textarea = styled.textarea`
+
+interface ITextareaProps {
+  name: string;
+  id: string;
+  withErrors?:boolean
+}
+
+const Textarea = styled.textarea<ITextareaProps>`
   ${InputStyles};
   min-width: 100%;
   max-width: 100%;
