@@ -32,19 +32,24 @@ const Heading = styled.h2`
   color: black;
 `;
 
-
+type FormData = {
+  name: string;
+  email: string;
+  content: string;
+  agreement: boolean
+};
 
 const ContactForm:React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
-  const onSubmit = (data:{}):void => console.log(data);
+  const onSubmit = handleSubmit(data=>console.log(data));
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={onSubmit}>
       <Heading>Masz pytania? Skontaktuj się z nami</Heading>
       <div>
         <Input

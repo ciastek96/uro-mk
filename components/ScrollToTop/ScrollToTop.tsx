@@ -4,7 +4,7 @@ import { useScrollPosition } from "../../hooks/useScrollPosition";
 import RoundButton from "../RoundButton/RoundButton";
 import AngleUp from "../icons/AngleUp";
 
-const StyledRoundButton = styled(RoundButton)`
+const StyledRoundButton = styled(RoundButton)<{isVisible: boolean}>`
   box-shadow: 0 0px 30px -8px hsla(0, 0%, 0%, 0.3);
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
   transform: translateY(${({ isVisible }) => (isVisible ? "0" : "200%")});
@@ -16,7 +16,7 @@ const StyledRoundButton = styled(RoundButton)`
 `;
 
 const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useScrollPosition(
     ({ currPos }) => {

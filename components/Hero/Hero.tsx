@@ -4,6 +4,10 @@ import styled, {keyframes} from "styled-components";
 import BackgroundImage from "../../public/background.webp";
 import Context from "../../Context/Context";
 
+type Props = {
+  isNavOpen : boolean;
+}
+
 const Wrapper = styled.div`
   height: 100vh;
   width: 100%;
@@ -27,9 +31,7 @@ const Content = styled.div`
   /* flex: 1; */
 `;
 
-
-
-const Title = styled.h1`
+const Title = styled.h1<Props>`
   font-size: 48px;
   font-size: clamp(24px, 5vw, 48px);
   font-family: ${({ theme }) => theme.fontFamily.MontSerrat};
@@ -83,7 +85,7 @@ const Title = styled.h1`
   }
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled.p<Props>`
   max-width: 420px;
   width: 80%;
   font-family: ${({ theme }) => theme.fontFamily.Overpass};
@@ -115,7 +117,7 @@ interface IHeroProps {
 }
 
 const Hero:React.FC<IHeroProps> = ({hero}) => {
-  const { isNavOpen, setIsNavOpen } = useContext(Context);
+  const { isNavOpen } = useContext(Context);
   return (
     <Wrapper>
       <Image

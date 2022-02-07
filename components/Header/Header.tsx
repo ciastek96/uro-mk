@@ -44,7 +44,8 @@ const InnerWrapper = styled.div`
   padding: 0 1rem;
 `;
 
-const SocialContainer = styled.div`
+
+const SocialContainer = styled.div<{isNavOpen: boolean}>`
   display: none;
   height: 100%;
   width: 80px;
@@ -104,8 +105,8 @@ const StyledYTIcon = styled(YTIcon)`
 `;
 
 const Header = () => {
-  // const [isNavOpen, setIsNavOpen] = useState(false)
-  const {isNavOpen, setIsNavOpen} = useContext(Context);
+  const {isNavOpen} = useContext(Context);
+  console.log( useContext(Context))
   return (
   <StyledHeader>
     <InnerWrapper>
@@ -134,8 +135,7 @@ const Header = () => {
         </a>
       </Logotype>
       <Hamburger />
-      <Navigation isOpen={isNavOpen} setIsOpen={setIsNavOpen}/>
-      {/* {console.log(q)} */}
+      <Navigation />
     </InnerWrapper>
   </StyledHeader>
 )}

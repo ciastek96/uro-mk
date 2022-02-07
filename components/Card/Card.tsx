@@ -62,8 +62,7 @@ interface ICardProps {
   children: ReactNode;
 }
 
-const Card: React.FC<ICardProps> = ({ id, image, title, children }) => {
-  return (
+const Card: React.FC<ICardProps> = ({ id, image, title, children }) => (
     <Wrapper id={id}>
       <InnerWrapper>
         <Image
@@ -80,7 +79,6 @@ const Card: React.FC<ICardProps> = ({ id, image, title, children }) => {
         <Content>{children}</Content>
       </InnerWrapper>
     </Wrapper>
-  );
-};
+  )
 
 export default Card;

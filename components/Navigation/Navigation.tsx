@@ -1,6 +1,6 @@
-import React, { useContext, ReactNode } from "react";
-import Link from "next/link";
+import React, { useContext} from "react";
 import styled from "styled-components";
+import NavLink from '../NavLink/NavLink'
 import usePortal from "../../hooks/usePortal";
 import Context from "../../Context/Context";
 import ContactData from "../ContactData/ContactData";
@@ -11,7 +11,7 @@ const InnerWrapper = styled.div`
   place-items: center;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{isOpen: boolean}>`
   @keyframes inAnimation {
     0% {
       opacity: 0;
@@ -82,46 +82,6 @@ const List = styled.ul`
   justify-content: space-evenly;
 `;
 
-const ListItem = styled.li`
-  position: relative;
-  cursor: pointer;
-
-  & > a {
-    color: ${({ theme }) => theme.color.white65};
-    transition: color 0.15s ease-in-out;
-  }
-
-  & > a:hover,
-  & > a:focus {
-    color: ${({ theme }) => theme.color.white};
-  }
-
-  & > a::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 5px;
-    width: 30%;
-    background-color: ${({ theme }) => theme.color.yellow};
-    color: ${({ theme }) => theme.color.white65};
-    transition: transform 0.15s ease-in-out;
-    transform: scaleX(0);
-    transform-origin: 0% 50%;
-  }
-
-  & > a:hover::before,
-  & > a:focus::before {
-    color: ${({ theme }) => theme.color.white65};
-    border-color: ${({ theme }) => theme.color.yellow};
-    transform: scaleX(100%);
-  }
-
-  & > a:active {
-    color: ${({ theme }) => theme.color.white80};
-  }
-`;
-
 const Line = styled.div`
   position: absolute;
   bottom: 0;
@@ -134,38 +94,28 @@ const Line = styled.div`
   background-color: rgba(255, 255, 255, 0.1);
 `;
 
-interface INavLinkProps {
-  href: string;
-  children: ReactNode;
-  setIsOpen: ()=>{};
-}
 
-const NavLink: React.FC<INavLinkProps> = ({ href, children, setIsOpen }) => (
-  <ListItem onClick={() => setIsOpen(false)}>
-    <Link href={href}>
-      <a>{children}</a>
-    </Link>
-  </ListItem>
-);
+
+
 
 const Navigation = () => {
-  const { isNavOpen: isOpen, setIsNavOpen: setIsOpen } = useContext(Context);
+  const { isNavOpen: isOpen } = useContext(Context);
   const modalContent = isOpen ? (
     <>
       <Wrapper isOpen={isOpen}>
         <InnerWrapper>
           <Nav>
             <List>
-              <NavLink href="/#onas" setIsOpen={setIsOpen}>
+              <NavLink href="/#onas">
                 O nas
               </NavLink>
-              <NavLink href="/#praca" setIsOpen={setIsOpen}>
+              <NavLink href="/#praca">
                 Praca
               </NavLink>
-              <NavLink href="/#realizacje" setIsOpen={setIsOpen}>
+              <NavLink href="/#realizacje">
                 Realizacje
               </NavLink>
-              <NavLink href="/#kontakt" setIsOpen={setIsOpen}>
+              <NavLink href="/#kontakt">
                 Kontakt
               </NavLink>
             </List>

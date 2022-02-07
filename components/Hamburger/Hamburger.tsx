@@ -19,7 +19,7 @@ const Box = styled.span`
   position: relative;
 `;
 
-const InnerWrapper = styled.span`
+const InnerWrapper = styled.span<{isOpen: boolean}>`
   width: 100%;
   height: 2px;
   background-color: ${({ isOpen }) => (isOpen ? "transparent" : "white")};
@@ -53,7 +53,6 @@ const InnerWrapper = styled.span`
 `;
 
 const Hamburger = () => {
-  // const [isToggle, setIsToggle] = useState(false);
   const { isNavOpen: isToggle, setIsNavOpen: setIsToggle } =
     useContext(Context);
   return (
