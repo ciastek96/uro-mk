@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import graphQLClient from '../../api/graphQLClient'
+import LightGallery from "lightgallery/react";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+import graphQLClient from "../../api/graphQLClient";
 import Image from "next/image";
 import RoundButton from "../../components/RoundButton/RoundButton";
 import Heading from "../../components/Heading/Heading";
 import Content from "../../components/Content/Content";
-import MasonryGrid from "../../components/MasonryGrid/MasonryGrid";
-import Img1 from "../../public/gallery/1.jpg";
 import AngleLeft from "../../components/icons/AngleLeft";
 
 const Wrapper = styled.div`
@@ -34,7 +38,7 @@ const Inner = styled.div`
   padding-inline: clamp(0.25rem, 5rem, 8vw);
 `;
 
-const Item = ({post: {title, content, photos, coverImage}}) => {
+const Item = ({ post: { title, content, photos, coverImage } }) => {
   const router = useRouter();
   return (
     <Wrapper>
@@ -46,11 +50,25 @@ const Item = ({post: {title, content, photos, coverImage}}) => {
         >
           <AngleLeft />
         </RoundButton>
-        <Heading></Heading>
-        <Content>
-          {content}
-        </Content>
-        <MasonryGrid />
+        <Heading>{title}</Heading>
+        <Content>{content}</Content>
+        {/* <LightGallery
+            onInit={() => console.log("git")}
+            speed={500}
+            plugins={[lgThumbnail, lgZoom]}
+            elementClassNames="custom-wrapper-class"
+          >
+            {photos.map((photo, key) => (
+              <a
+                data-lg-size="300-400"
+                className="gallery-item"
+                href={photo.url}
+                key={key}
+              >
+                <img className="img-responsive" alt={key} src={photo.url} />
+              </a>
+            ))}
+          </LightGallery> */}
       </Inner>
       <Inner>
         <Image
@@ -67,7 +85,6 @@ const Item = ({post: {title, content, photos, coverImage}}) => {
   );
 };
 
-
 export const getStaticPaths = async () => {
   const query = `{
     posts {
@@ -75,15 +92,16 @@ export const getStaticPaths = async () => {
     }
   }
   `;
-  const {posts} = await graphQLClient.request(query);
-  const paths = posts.map(post=>({params: {slug: [post.slug]}}))
+  const { posts } = await graphQLClient.request(query);
+  const paths = posts.map((post) => ({ params: { slug: [post.slug] } }));
 
   return {
-    paths, fallback: false
+    paths,
+    fallback: false,
   };
 };
 
-export const getStaticProps = async ({params}) => {
+export const getStaticProps = async ({ params }) => {
   const slug = params.slug[0];
 
   const query = `{
@@ -101,14 +119,13 @@ export const getStaticProps = async ({params}) => {
     }
   }
   `;
-  const {post} = await graphQLClient.request(query);
+  const { post } = await graphQLClient.request(query);
 
   return {
     props: {
-      post
+      post,
     },
   };
 };
-
 
 export default Item;

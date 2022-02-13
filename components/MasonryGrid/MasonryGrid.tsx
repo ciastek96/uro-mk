@@ -2,18 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import Img1 from "../../public/gallery/1.jpg";
-import Img2 from "../../public/gallery/2.jpg";
-import Img3 from "../../public/gallery/3.jpg";
-import Img4 from "../../public/gallery/4.jpg";
-import Img5 from "../../public/gallery/5.jpg";
-import Img6 from "../../public/gallery/6.jpg";
-import Img7 from "../../public/gallery/7.jpg";
-import Img8 from "../../public/gallery/8.jpg";
-
-const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8];
-
-// body ul li a img
 
 const List = styled.ul`
   margin: 0;
@@ -32,6 +20,7 @@ const ListItem = styled.li`
   margin-bottom: 0.5rem;
   position: relative;
   cursor: pointer;
+  height: 100%;
 
   a::before {
     content: "";
@@ -52,18 +41,33 @@ const ListItem = styled.li`
   }
 `;
 
-const MasonryGrid = () => (
+interface IMasonryGrid {
+  images: Image[];
+}
+
+type Image = {
+  title: string;
+  slug: string;
+  coverImage: {
+    url: string;
+    width: number;
+    height: number;
+  };
+};
+
+const MasonryGrid: React.FC<IMasonryGrid> = ({ images }) => (
   <List>
-    {images.map((image) => (
-      <ListItem key={image.blurDataURL}>
-        <Link href="/realizacje" passHref={true}>
+    {images.map(({ slug, title, coverImage: { url, width, height } }) => (
+      <ListItem key={slug}>
+        <Link href={`/realizacje/${encodeURIComponent(slug)}`} passHref={true}>
           <a>
             <Image
-              src={image}
-              alt={image.src}
-              layout="responsive"
+              src={url}
+              alt={title}
               quality="75"
-              placeholder="blur"
+              layout="responsive"
+              height={height}
+              width={width}
             />
           </a>
         </Link>

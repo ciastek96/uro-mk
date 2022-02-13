@@ -11,10 +11,14 @@ const Wrapper = styled.section`
   padding: 1rem;
 `;
 
-const Works = () => (
+interface IWorks {
+  posts: any[]
+}
+
+const Works:React.FC<IWorks> = ({posts}) => (
   <Wrapper id="realizacje">
     <Heading>realizacje</Heading>
-    <MasonryGrid />
+    <MasonryGrid images={posts}/>
   </Wrapper>
 );
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import graphQLClient from '../api/graphQLClient'
+import graphQLClient from "../api/graphQLClient";
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import Hero from "../components/Hero/Hero";
@@ -26,14 +26,27 @@ export const getStaticProps = async () => {
         url
       }
     }
+    posts(orderBy: date_DESC) {
+      title
+      slug
+      coverImage {
+        url
+        width
+        height
+      }
+      date
+    }
   }
   `;
-  const {hero, sections} = await graphQLClient.request(query);
+  const { hero, sections, posts } = await graphQLClient.request(query);
+
+  console.log(posts);
 
   return {
     props: {
       hero,
-      sections
+      sections,
+      posts,
     },
   };
 };
@@ -41,9 +54,10 @@ export const getStaticProps = async () => {
 interface IHomeProps {
   hero: any;
   sections: any;
+  posts: any;
 }
 
-export default function Home({ hero, sections }: IHomeProps) {
+export default function Home({ hero, sections, posts }: IHomeProps) {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   return (
     <>
@@ -60,11 +74,11 @@ export default function Home({ hero, sections }: IHomeProps) {
       </Head>
       <Context.Provider value={{ isNavOpen, setIsNavOpen }}>
         <Header />
-        <Hero hero={hero}/>
+        <Hero hero={hero} />
       </Context.Provider>
 
-      <About sections={sections}/>
-      <Works />
+      <About sections={sections} />
+      <Works posts={posts} />
 
       <Footer />
       <ScrollToTop />
