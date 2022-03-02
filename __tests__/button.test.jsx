@@ -1,22 +1,31 @@
-import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../theme/theme";
+import { render } from "@testing-library/react";
+import { toBeInTheDocument } from "@testing-library/jest-dom";
+import { renderWithThemeProvider } from "../utils/testUtils";
 import Button from "../components/Button/Button";
 import ReactDOM from "react-dom";
 
 describe("Button", () => {
-  const withThemeProvider = (element) =>
-    `<ThemeProvider theme={theme}>${element}</ThemeProvider>`;
-
   it("renders without crashing", () => {
     const div = document.createElement("div");
 
-    ReactDOM.render(withThemeProvider(<Button />), div);
+    ReactDOM.render(renderWithThemeProvider(<Button />), div);
   });
 
   it("renders button correctly", () => {
-    const { getByText } = render(withThemeProvider(<Button>click me</Button>));
+    const { getByText } = render(
+      renderWithThemeProvider(<Button>click me</Button>)
+    );
 
-    expect(getByText("click me").toBeInTheDocument());
+    expect(getByText(/click me/i)).toBeInTheDocument();
+  });
+
+  it("renders value correctly", () => {
+    const { getByText } = render(
+      renderWithThemeProvider(<Button>click me</Button>)
+    );
+
+    const textContent = /click me/i;
+
+    expect(getByText(textContent)).toHaveTextContent(textContent);
   });
 });

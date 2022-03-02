@@ -1,5 +1,6 @@
 // jest.config.js
 module.exports = {
+  setupFilesAfterEnv: ["./jest.setup.js"],
   collectCoverageFrom: [
     "**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts",

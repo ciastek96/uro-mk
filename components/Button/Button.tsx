@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -24,14 +24,24 @@ const StyledButton = styled.button`
   }
 `;
 
+enum ButtonTypes {
+  Button = "button",
+  Submit = "submit",
+  Reset = "reset",
+}
+
 interface IButtonProps {
   isLoading?: boolean;
   children: ReactNode;
-  type: "button" | "submit" | "reset" | undefined;
+  type: ButtonTypes | undefined;
 }
 
-const Button: React.FC<IButtonProps> = ({ isLoading = false, children, type="submit" } : IButtonProps) => (
+const Button: React.FC<IButtonProps> = ({
+  isLoading = false,
+  children,
+  type = ButtonTypes.Button,
+}: IButtonProps) => (
   <StyledButton type={type}>{isLoading ? "loading" : children}</StyledButton>
-)
+);
 
 export default Button;
