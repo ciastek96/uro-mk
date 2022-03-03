@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { ButtonTypes } from "../../models/models";
 import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 import Button from "../Button/Button";
@@ -36,26 +37,33 @@ type FormData = {
   name: string;
   email: string;
   content: string;
-  agreement: boolean
+  agreement: boolean;
 };
 
-const ContactForm:React.FC = () => {
+const ContactForm: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = handleSubmit(data=>console.log(data));
+  const onSubmit = handleSubmit(async (data: FormData) => {
+    setIsLoading(true);
+    await console.log(data);
+    setIsLoading(false);
+  });
 
   return (
     <Form onSubmit={onSubmit}>
       <Heading>Masz pytania? Skontaktuj się z nami</Heading>
-      <div>
+      <>
         <Input
           type="text"
           placeholder="Imię i nazwisko *"
           id="name"
+          data-testid="name"
           withErrors={!!errors.name}
           {...register("name", { required: true })}
         />
@@ -64,6 +72,7 @@ const ContactForm:React.FC = () => {
           type="text"
           placeholder="Adres e-mail *"
           id="email"
+          data-testid="email"
           withErrors={!!errors.email}
           {...register("email", {
             required: true,
@@ -76,21 +85,25 @@ const ContactForm:React.FC = () => {
         {errors.email && <Error>Pole obowiązkowe</Error>}
         <Textarea
           id="content"
+          data-testid="content"
           placeholder="Treść wiadomości... *"
           withErrors={!!errors.content}
           {...register("content", { required: true })}
         />
         {errors.content && <Error>Pole obowiązkowe</Error>}
-      </div>
+      </>
       <Checkbox
         name="agreement"
+        data-testid="agreement"
         label="Wyrażam zgodę na przetwarzanie danych osobowych przez firmę URO-MK w
         celu udzielenia odpowiedzi na zapytanie."
         withErrors={!!errors.agreement}
         registerProps={{ ...register("agreement", { required: true }) }}
       />
       {errors.agreement && <Error>Pole obowiązkowe</Error>}
-      <Button type="submit">Wyślij</Button>
+      <Button isLoading={isLoading} name="submit" type={ButtonTypes.Submit}>
+        wyślij
+      </Button>
 
       {console.log(errors)}
     </Form>

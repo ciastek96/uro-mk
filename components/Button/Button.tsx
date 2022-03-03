@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
+import { ButtonTypes } from "../../models/models";
 
 const StyledButton = styled.button`
   background-color: ${({ theme }) => theme.color.yellow};
@@ -24,24 +25,22 @@ const StyledButton = styled.button`
   }
 `;
 
-enum ButtonTypes {
-  Button = "button",
-  Submit = "submit",
-  Reset = "reset",
-}
-
 interface IButtonProps {
   isLoading?: boolean;
   children: ReactNode;
   type: ButtonTypes | undefined;
+  name: string;
 }
 
 const Button: React.FC<IButtonProps> = ({
   isLoading = false,
   children,
   type = ButtonTypes.Button,
+  name,
 }: IButtonProps) => (
-  <StyledButton type={type}>{isLoading ? "loading" : children}</StyledButton>
+  <StyledButton name={name} type={type}>
+    {isLoading ? "loading" : children}
+  </StyledButton>
 );
 
 export default Button;
